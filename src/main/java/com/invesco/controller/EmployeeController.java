@@ -58,7 +58,12 @@ public class EmployeeController {
 	public Optional<Employee> getEmployeeById(@PathVariable("eid") Integer eid ) {
 		return employeeRepo.findById(eid);
 	}
-
+	
+	@GetMapping("/employee/{department}")
+	public List<Employee> getEmployeeByDepartment(@PathVariable("department") String department) {
+		return employeeRepo.findByDepartment(department);
+	}
+	
 	@DeleteMapping("/employee/{eid}")
 	public String deleteEmployee(@PathVariable Integer eid) {
 		Employee employee = employeeRepo.getOne(eid);
